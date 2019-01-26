@@ -13,13 +13,15 @@ public class HouseObject: MonoBehaviour {
     public float visibilityPercent = 0.0f;
     public float visibilityPerSecond = 1.0f;
 
-    public Slider progressBarSlider;
+
+    private GameObject brokenModel, fixedModel;
+    private Slider repairBarSlider;
 
     public static GameObject viewCone;
     public static GameObject viewPlayer;
 
     private Bounds colliderBounds;
-    
+
     bool isRepaired() {
         return (repairedPercent >= 100.0f);
     }
@@ -34,16 +36,24 @@ public class HouseObject: MonoBehaviour {
         colliderBounds = gameObject.GetComponent<Collider>().bounds;
         viewCone = GameObject.FindGameObjectWithTag("viewCone");
         viewPlayer = GameObject.FindGameObjectWithTag("viewPlayer");
+
+        foreach(Transform child in transform) {
+            if(child.gameObject.tag == "broken") brokenModel = child.gameObject;
+            if(child.gameObject.tag == "fixed") fixedModel = child.gameObject;
+        }
+        if(!brokenModel || !fixedModel) {
+            Debug.LogError("Missing Model or Tag in Model...");
+        }
     }
 
     // Update is called once per frame
     void Update() {
         if(!isRepaired()) {
-            if(colliderBounds.Intersects(viewPlayer.GetComponent<Collider>().bounds)) {
-                repairedPercent += (repairProgressPerSecond * Time.deltaTime);
-            }
+            //if(colliderBounds.Intersects(viewPlayer.GetComponent<Collider>().bounds)) {
+            repairedPercent += (repairProgressPerSecond * Time.deltaTime);
+            //}
         }
-        progressBarSlider.value = Mathf.FloorToInt(repairedPercent);
+        repairBarSlider.value = Mathf.FloorToInt(repairedPercent);
 
         if(!wasSeen()) {
             if(colliderBounds.Intersects(viewCone.GetComponent<Collider>().bounds)) {
