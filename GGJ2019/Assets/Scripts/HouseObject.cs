@@ -19,6 +19,8 @@ public class HouseObject: MonoBehaviour {
 
     public GameObject _viewCone;
     public GameObject _viewPlayer;
+    public GameObject _buyer;
+    public bool _wasJudged;
 
     private Bounds colliderBounds;
 
@@ -28,6 +30,7 @@ public class HouseObject: MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        _wasJudged = false;
         _repairedPercent = 0;
         colliderBounds = gameObject.GetComponent<Collider>().bounds;
         //viewCone = GameObject.FindGameObjectWithTag("viewCone");
@@ -58,13 +61,16 @@ public class HouseObject: MonoBehaviour {
         
         // check if buyer sees object
         if(colliderBounds.Intersects(_viewCone.GetComponent<Collider>().bounds)) {
-            if (_repairedPercent > 0.8)
-            {
-                Debug.Log("Nice Object");
-            } 
-            else
-            {
-                Debug.Log("This One is destroyed");
+            if(!_wasJudged) {
+                if(_repairedPercent > 0.8) {
+                    Debug.Log("Nice Object");
+                    _buyer.GetComponent<BuyerSatisfaction>().increase(0.1f);
+                    _wasJudged = true;
+                } else {
+                    Debug.Log("This One is destroyed");
+                    _buyer.GetComponent<BuyerSatisfaction>().decrease(0.1f);
+                    _wasJudged = true;
+                }
             }
         }
     }
