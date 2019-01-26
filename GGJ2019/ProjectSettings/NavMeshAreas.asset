@@ -21,8 +21,8 @@ NavMeshProjectSettings:
     cost: 1
   - name: 
     cost: 1
-  - name: 
-    cost: 1
+  - name: Characters
+    cost: 0
   - name: 
     cost: 1
   - name: 
