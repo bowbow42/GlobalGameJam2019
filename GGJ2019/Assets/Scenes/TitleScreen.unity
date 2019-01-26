@@ -267,7 +267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265801119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 958920032}
@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 773470808}
   - component: {fileID: 773470807}
   - component: {fileID: 773470806}
+  - component: {fileID: 773470809}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -365,6 +366,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773470804}
   m_CullTransparentMesh: 0
+--- !u!114 &773470809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773470804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bdbe0306a253f408aef5ee3492a8eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &841129947
 GameObject:
   m_ObjectHideFlags: 0
