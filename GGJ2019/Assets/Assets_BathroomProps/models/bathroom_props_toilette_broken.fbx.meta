@@ -1,23 +1,27 @@
 fileFormatVersion: 2
-guid: 9b81bf931db4b014dacb4c9116757384
+guid: 575bc51753de6b145899830a013b4eba
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: stool
-    100004: stool.001
-    400000: //RootNode
-    400002: stool
-    400004: stool.001
-    2100000: breakfast-bar
-    2300000: //RootNode
-    2300002: stool
-    2300004: stool.001
-    3300000: //RootNode
-    3300002: stool
-    3300004: stool.001
-    4300000: stool
-    4300002: stool.001
+    100000: 042_vray
+    100002: //RootNode
+    100004: Object005
+    100006: Object03
+    400000: 042_vray
+    400002: //RootNode
+    400004: Object005
+    400006: Object03
+    2100000: 'Material #91'
+    2100002: 'Material #89'
+    2300000: 042_vray
+    2300002: Object005
+    2300004: Object03
+    3300000: 042_vray
+    3300002: Object005
+    3300004: Object03
+    4300000: Object005
+    4300002: Object03
+    4300004: 042_vray
   externalObjects: {}
   materials:
     importMaterials: 1
