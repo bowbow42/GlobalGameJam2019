@@ -15,11 +15,13 @@ public class HouseObject: MonoBehaviour {
 
 
     private GameObject brokenModel, fixedModel;
+    
+    public GameObject _repairBarPrefab;
+    private GameObject _repairBarInstance;
     private Slider repairBarSlider;
-    public GameObject repairBarPrefab;
 
-    public static GameObject viewCone;
-    public static GameObject viewPlayer;
+    //public static GameObject viewCone;
+    //public static GameObject viewPlayer;
 
     private Bounds colliderBounds;
 
@@ -35,11 +37,13 @@ public class HouseObject: MonoBehaviour {
     void Start() {
         repairedPercent = 0;
         colliderBounds = gameObject.GetComponent<Collider>().bounds;
-        viewCone = GameObject.FindGameObjectWithTag("viewCone");
-        viewPlayer = GameObject.FindGameObjectWithTag("viewPlayer");
+        //viewCone = GameObject.FindGameObjectWithTag("viewCone");
+        //viewPlayer = GameObject.FindGameObjectWithTag("viewPlayer");
 
-        Instantiate(repairBarPrefab);
-        repairBarSlider = repairBarPrefab.GetComponent<Slider>();
+        _repairBarInstance = Instantiate(_repairBarPrefab, new Vector3(transform.position.x, transform.position.y+1, transform.position.z), transform.rotation) as GameObject;
+        Debug.Log(_repairBarInstance);
+        repairBarSlider = _repairBarInstance.GetComponentInChildren<Slider>();
+        Debug.Log(repairBarSlider);
         
         foreach(Transform child in transform) {
             if(child.gameObject.tag == "broken") brokenModel = child.gameObject;
@@ -59,10 +63,10 @@ public class HouseObject: MonoBehaviour {
         }
         repairBarSlider.value = Mathf.FloorToInt(repairedPercent);
 
-        if(!wasSeen()) {
-            if(colliderBounds.Intersects(viewCone.GetComponent<Collider>().bounds)) {
-                visibilityPercent += (visibilityPerSecond * Time.deltaTime);
-            }
-        }
+        //if(!wasSeen()) {
+        //    if(colliderBounds.Intersects(viewCone.GetComponent<Collider>().bounds)) {
+        //        visibilityPercent += (visibilityPerSecond * Time.deltaTime);
+        //    }
+        //}
     }
 }
