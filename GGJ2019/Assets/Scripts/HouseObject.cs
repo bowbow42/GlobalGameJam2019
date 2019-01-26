@@ -4,52 +4,52 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HouseObject: MonoBehaviour {
-    const float progressBarMaxWidth = 0.95f;
-    const float progressBarHeight = 0.7f;
-    const float progressBarDepth = 1.0f;
+    const float _progressBarMaxWidth = 0.95f;
+    const float _progressBarHeight = 0.7f;
+    const float _progressBarDepth = 1.0f;
 
-    public float repairedPercent = 0.0f;
-    public float repairProgressPerSecond = 1.0f;
-    public float visibilityPercent = 0.0f;
-    public float visibilityPerSecond = 1.0f;
+    public float _repairedPercent = 0.0f;
+    public float _repairProgressPerSecond = 1.0f;
+    public float _visibilityPercent = 0.0f;
+    public float _visibilityPerSecond = 1.0f;
 
 
-    private GameObject brokenModel, fixedModel;
+    private GameObject _brokenModel, _fixedModel;
     
     public GameObject _repairBarPrefab;
     private GameObject _repairBarInstance;
-    private Slider repairBarSlider;
+    private Slider _repairBarSlider;
 
-    //public static GameObject viewCone;
-    //public static GameObject viewPlayer;
+    //public GameObject _viewCone;
+    public GameObject _viewPlayer;
 
     private Bounds colliderBounds;
 
     bool isRepaired() {
-        return (repairedPercent >= 100.0f);
+        return (_repairedPercent >= 100.0f);
     }
 
     bool wasSeen() {
-        return (visibilityPercent >= 100.0f);
+        return (_visibilityPercent >= 100.0f);
     }
 
     // Start is called before the first frame update
     void Start() {
-        repairedPercent = 0;
+        _repairedPercent = 0;
         colliderBounds = gameObject.GetComponent<Collider>().bounds;
         //viewCone = GameObject.FindGameObjectWithTag("viewCone");
         //viewPlayer = GameObject.FindGameObjectWithTag("viewPlayer");
 
         _repairBarInstance = Instantiate(_repairBarPrefab, new Vector3(transform.position.x, transform.position.y+1, transform.position.z), transform.rotation) as GameObject;
         Debug.Log(_repairBarInstance);
-        repairBarSlider = _repairBarInstance.GetComponentInChildren<Slider>();
-        Debug.Log(repairBarSlider);
+        _repairBarSlider = _repairBarInstance.GetComponentInChildren<Slider>();
+        Debug.Log(_repairBarSlider);
         
         foreach(Transform child in transform) {
-            if(child.gameObject.tag == "broken") brokenModel = child.gameObject;
-            if(child.gameObject.tag == "fixed") fixedModel = child.gameObject;
+            if(child.gameObject.tag == "broken") _brokenModel = child.gameObject;
+            if(child.gameObject.tag == "fixed") _fixedModel = child.gameObject;
         }
-        if(!brokenModel || !fixedModel) {
+        if(!_brokenModel || !_fixedModel) {
             Debug.LogError("Missing Model or Tag in Model...");
         }
     }
@@ -57,16 +57,19 @@ public class HouseObject: MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if(!isRepaired()) {
-            //if(colliderBounds.Intersects(viewPlayer.GetComponent<Collider>().bounds)) {
-            repairedPercent += (repairProgressPerSecond * Time.deltaTime);
-            //}
+            if(colliderBounds.Intersects(_viewPlayer.GetComponent<Collider>().bounds)) {
+                _repairedPercent += (_repairProgressPerSecond * Time.deltaTime);
+                Debug.Log(_repairedPercent);
+            }
         }
-        repairBarSlider.value = Mathf.FloorToInt(repairedPercent);
+        _repairBarSlider.value = Mathf.FloorToInt(_repairedPercent);
 
-        //if(!wasSeen()) {
-        //    if(colliderBounds.Intersects(viewCone.GetComponent<Collider>().bounds)) {
-        //        visibilityPercent += (visibilityPerSecond * Time.deltaTime);
-        //    }
-        //}
+        /*
+        if(!wasSeen()) {
+            if(colliderBounds.Intersects(_viewCone.GetComponent<Collider>().bounds)) {
+                _visibilityPercent += (_visibilityPerSecond * Time.deltaTime);
+            }
+        }
+        */
     }
 }

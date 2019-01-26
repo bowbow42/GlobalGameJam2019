@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class BuyerController : MonoBehaviour {
-
-    public Camera _cam;
+    
     public NavMeshAgent _agent;
 
     public Component _destinations;
