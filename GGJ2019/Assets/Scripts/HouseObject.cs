@@ -9,10 +9,7 @@ public class HouseObject: MonoBehaviour {
     const float _progressBarDepth = 1.0f;
 
     public float _repairedPercent = 0.0f;
-    public float _repairProgressPerSecond = 1.0f;
-    public float _visibilityPercent = 0.0f;
-    public float _visibilityPerSecond = 1.0f;
-
+    public float _repairProgressPerSecond = 0.1f;
 
     private GameObject _brokenModel, _fixedModel;
     
@@ -20,21 +17,20 @@ public class HouseObject: MonoBehaviour {
     private GameObject _repairBarInstance;
     private Slider _repairBarSlider;
 
-    //public GameObject _viewCone;
+    public GameObject _viewCone;
     public GameObject _viewPlayer;
+    public GameObject _buyer;
+    public bool _wasJudged;
 
     private Bounds colliderBounds;
 
     bool isRepaired() {
-        return (_repairedPercent >= 100.0f);
-    }
-
-    bool wasSeen() {
-        return (_visibilityPercent >= 100.0f);
+        return (_repairedPercent >= 1.0f);
     }
 
     // Start is called before the first frame update
     void Start() {
+        _wasJudged = false;
         _repairedPercent = 0;
         colliderBounds = gameObject.GetComponent<Collider>().bounds;
         //viewCone = GameObject.FindGameObjectWithTag("viewCone");
@@ -59,17 +55,23 @@ public class HouseObject: MonoBehaviour {
         if(!isRepaired()) {
             if(colliderBounds.Intersects(_viewPlayer.GetComponent<Collider>().bounds)) {
                 _repairedPercent += (_repairProgressPerSecond * Time.deltaTime);
-                Debug.Log(_repairedPercent);
             }
         }
-        _repairBarSlider.value = Mathf.FloorToInt(_repairedPercent);
-
-        /*
-        if(!wasSeen()) {
-            if(colliderBounds.Intersects(_viewCone.GetComponent<Collider>().bounds)) {
-                _visibilityPercent += (_visibilityPerSecond * Time.deltaTime);
+        _repairBarSlider.value = Mathf.Min(1, _repairedPercent);
+        
+        // check if buyer sees object
+        if(colliderBounds.Intersects(_viewCone.GetComponent<Collider>().bounds)) {
+            if(!_wasJudged) {
+                if(_repairedPercent > 0.8) {
+                    Debug.Log("Nice Object");
+                    _buyer.GetComponent<BuyerSatisfaction>().increase(0.1f);
+                    _wasJudged = true;
+                } else {
+                    Debug.Log("This One is destroyed");
+                    _buyer.GetComponent<BuyerSatisfaction>().decrease(0.1f);
+                    _wasJudged = true;
+                }
             }
         }
-        */
     }
 }
