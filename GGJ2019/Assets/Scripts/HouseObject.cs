@@ -16,6 +16,7 @@ public class HouseObject: MonoBehaviour {
 
     private GameObject brokenModel, fixedModel;
     private Slider repairBarSlider;
+    public GameObject repairBarPrefab;
 
     public static GameObject viewCone;
     public static GameObject viewPlayer;
@@ -37,6 +38,9 @@ public class HouseObject: MonoBehaviour {
         viewCone = GameObject.FindGameObjectWithTag("viewCone");
         viewPlayer = GameObject.FindGameObjectWithTag("viewPlayer");
 
+        Instantiate(repairBarPrefab);
+        repairBarSlider = repairBarPrefab.GetComponent<Slider>();
+        
         foreach(Transform child in transform) {
             if(child.gameObject.tag == "broken") brokenModel = child.gameObject;
             if(child.gameObject.tag == "fixed") fixedModel = child.gameObject;
