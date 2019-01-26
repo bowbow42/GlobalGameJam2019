@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9bf553ae5bab59b40a857425955fb26d
+guid: 47a00f78785af5044b0963339fad57a1
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: wall
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wall
+    second: {fileID: 2100000, guid: 729ac1feac0fb36449584da2cb343d7f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
