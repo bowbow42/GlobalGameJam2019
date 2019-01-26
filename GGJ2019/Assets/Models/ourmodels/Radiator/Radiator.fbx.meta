@@ -10,7 +10,17 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Radiator
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Radiator_Main
+    second: {fileID: 2100000, guid: 85efeaebcf585934e8419d0d6537af6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Radiator_Metall
+    second: {fileID: 2100000, guid: 23766ff0857ff3540940938f43b6238c, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
