@@ -1,29 +1,34 @@
 fileFormatVersion: 2
-guid: 5d4e2a8052df08345b59e4754c1df26e
+guid: 2a96dd36d35258a47b4fb84edff35aca
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Cube
-    100004: Cylinder
+    100000: border
+    100002: cross
+    100004: glass
     100006: wall
-    400000: //RootNode
-    400002: Cube
-    400004: Cylinder
+    100008: //RootNode
+    400000: border
+    400002: cross
+    400004: glass
     400006: wall
-    2100000: pipe
-    2100002: No Name
-    2100004: hole
-    2100006: source
-    2300000: Cube
-    2300002: Cylinder
-    2300004: wall
-    3300000: Cube
-    3300002: Cylinder
-    3300004: wall
-    4300000: Cylinder
-    4300002: Cube
+    400008: //RootNode
+    2100000: No Name
+    2100002: border
+    2100004: source
+    2100006: glas
+    2300000: border
+    2300002: cross
+    2300004: glass
+    2300006: wall
+    3300000: border
+    3300002: cross
+    3300004: glass
+    3300006: wall
+    4300000: border
+    4300002: cross
     4300004: wall
+    4300006: glass
   externalObjects: {}
   materials:
     importMaterials: 1
