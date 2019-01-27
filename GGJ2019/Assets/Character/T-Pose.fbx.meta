@@ -128,7 +128,42 @@ ModelImporter:
     13700010: Plane
     13700012: Plane.001
     13700014: Sphere
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyes
+    second: {fileID: 2100000, guid: ca0c30693cbb7504981e70eef9c1fff7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Face
+    second: {fileID: 2100000, guid: 55f81034809f48045ab25c67ead5d1b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair
+    second: {fileID: 2100000, guid: a68f97ea0be0d6b4f9c24cadb33f228d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shoes
+    second: {fileID: 2100000, guid: d8ac15bdfce84cd429be8cb46b9ed335, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin
+    second: {fileID: 2100000, guid: 2dbccd60f77e48a4995d0662deb72840, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TShirt
+    second: {fileID: 2100000, guid: 799bfbb5206508f42a80087dc233a709, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trouser
+    second: {fileID: 2100000, guid: 7549b9f868c5c0b4b8b782ae3f1c114f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
