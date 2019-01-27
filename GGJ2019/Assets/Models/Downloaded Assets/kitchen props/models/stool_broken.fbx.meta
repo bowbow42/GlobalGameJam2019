@@ -4,11 +4,20 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: stool
+    100004: stool.001
     400000: //RootNode
+    400002: stool
+    400004: stool.001
     2100000: breakfast-bar
     2300000: //RootNode
+    2300002: stool
+    2300004: stool.001
     3300000: //RootNode
+    3300002: stool
+    3300004: stool.001
     4300000: stool
+    4300002: stool.001
   externalObjects: {}
   materials:
     importMaterials: 1
