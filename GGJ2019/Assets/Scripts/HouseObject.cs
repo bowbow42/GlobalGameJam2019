@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HouseObject: MonoBehaviour {
+public class HouseObject : MonoBehaviour
+{
     const float _progressBarMaxWidth = 0.95f;
     const float _progressBarHeight = 0.7f;
     const float _progressBarDepth = 1.0f;
@@ -12,7 +13,7 @@ public class HouseObject: MonoBehaviour {
     public float _repairProgressPerSecond = 0.1f;
 
     private GameObject _brokenModel, _fixedModel;
-    
+
     public GameObject _repairBarPrefab;
     private GameObject _repairBarInstance;
     private Slider _repairBarSlider;
@@ -24,30 +25,35 @@ public class HouseObject: MonoBehaviour {
 
     private Bounds colliderBounds;
 
-    bool isRepaired() {
+    bool isRepaired()
+    {
         return (_repairedPercent >= 1.0f);
     }
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         _wasJudged = false;
         _repairedPercent = 0;
         colliderBounds = gameObject.GetComponent<Collider>().bounds;
 
-        _repairBarInstance = Instantiate(_repairBarPrefab, new Vector3(transform.position.x, transform.position.y+1, transform.position.z), transform.rotation) as GameObject;
+        _repairBarInstance = Instantiate(_repairBarPrefab, new Vector3(transform.position.x, transform.position.y + 10, transform.position.z), transform.rotation) as GameObject;
         _repairBarSlider = _repairBarInstance.GetComponentInChildren<Slider>();
-        
-        foreach(Transform child in transform) {
-            if(child.gameObject.tag == "broken") _brokenModel = child.gameObject;
-            if(child.gameObject.tag == "fixed") _fixedModel = child.gameObject;
+
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.tag == "broken") _brokenModel = child.gameObject;
+            if (child.gameObject.tag == "fixed") _fixedModel = child.gameObject;
         }
-        if(!_brokenModel || !_fixedModel) {
+        if (!_brokenModel || !_fixedModel)
+        {
             Debug.LogError("Missing Model or Tag in Model...");
         }
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         if (!isRepaired())
         {
             if (colliderBounds.Intersects(_viewPlayer.GetComponent<Collider>().bounds))
@@ -62,13 +68,49 @@ public class HouseObject: MonoBehaviour {
                         _fixedModel.active = true;
                     }
                 }
+
+                // start particle effect
+                ParticleSystem[] pslist = GetComponentsInChildren<ParticleSystem>();
+
+                int i = 0;
+                foreach (ParticleSystem ps in pslist)
+                {
+                    i++;
+                    ParticleSystem.EmissionModule em = ps.emission;
+                    em.enabled = true;
+                }
+                Debug.Log("Systems enabled: " + i);
+            }
+            else
+            {
+                // top particle effect
+                ParticleSystem[] pslist = GetComponentsInChildren<ParticleSystem>();
+
+                foreach (ParticleSystem ps in pslist)
+                {
+                    ParticleSystem.EmissionModule em = ps.emission;
+                    em.enabled = false;
+                }
+            }
+        }
+        else
+        {
+            // top particle effect
+            ParticleSystem[] pslist = GetComponentsInChildren<ParticleSystem>();
+
+            foreach (ParticleSystem ps in pslist)
+            {
+                ParticleSystem.EmissionModule em = ps.emission;
+                em.enabled = false;
             }
         }
         _repairBarSlider.value = Mathf.Min(1, _repairedPercent);
-        
+
         // check if buyer sees object
-        if(colliderBounds.Intersects(_viewCone.GetComponent<Collider>().bounds)) {
-            if(!_wasJudged) {
+        if (colliderBounds.Intersects(_viewCone.GetComponent<Collider>().bounds))
+        {
+            if (!_wasJudged)
+            {
                 if (_repairedPercent > 0.8)
                 {
                     Debug.Log("Nice Object");
