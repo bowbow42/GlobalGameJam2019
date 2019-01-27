@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class TitleScreen : MonoBehaviour {
     private Button playButton, helpButton, exitButton;
 
+    private AssetBundle _myLoadedAssetBundle;
+
     // Start is called before the first frame update
     void Start() {
         playButton = GameObject.FindGameObjectWithTag("playButton").GetComponent<Button>();
@@ -15,10 +17,13 @@ public class TitleScreen : MonoBehaviour {
         helpButton.onClick.AddListener(showHelp);
         exitButton = GameObject.FindGameObjectWithTag("exitButton").GetComponent<Button>();
         exitButton.onClick.AddListener(exitGame);
+
+        //_myLoadedAssetBundle = AssetBundle.LoadFromFile("Assets/AssetBundles/scenes");
     }
 
     void loadGame() {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("HouseLevel_01");
+        //SceneManager.LoadScene(_myLoadedAssetBundle.LoadAsset("HouseLevel_01"), LoadSceneMode.Single);
     }
 
     void showHelp() {
