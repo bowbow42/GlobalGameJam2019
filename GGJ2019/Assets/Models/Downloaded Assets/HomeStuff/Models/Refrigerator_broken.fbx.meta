@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: d8530304bcd4a834c94ae6a1795e6761
+guid: f0fcebd64bc64f646822fd446adb84be
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: 'Material #69'
+    2100000: MainMaterial
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Box01
+    4300000: Refrigerator
   externalObjects: {}
   materials:
     importMaterials: 1
