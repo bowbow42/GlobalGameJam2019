@@ -34,7 +34,7 @@ public class HouseObject: MonoBehaviour {
         _repairedPercent = 0;
         colliderBounds = gameObject.GetComponent<Collider>().bounds;
 
-        _repairBarInstance = Instantiate(_repairBarPrefab, new Vector3(transform.position.x, transform.position.y+10, transform.position.z), transform.rotation) as GameObject;
+        _repairBarInstance = Instantiate(_repairBarPrefab, new Vector3(transform.position.x, transform.position.y+1, transform.position.z), transform.rotation) as GameObject;
         _repairBarSlider = _repairBarInstance.GetComponentInChildren<Slider>();
         
         foreach(Transform child in transform) {
@@ -62,23 +62,7 @@ public class HouseObject: MonoBehaviour {
                         _fixedModel.active = true;
                     }
                 }
-
-                // start particle effect
-                gameObject.GetComponent<ParticleSystem>().Play();
-                gameObject.transform.Find("moveposition").GetComponent<ParticleSystem>().Play();
             }
-            else
-            {
-                // top particle effect
-                gameObject.GetComponent<ParticleSystem>().Stop();
-                gameObject.transform.Find("moveposition").GetComponent<ParticleSystem>().Stop();
-            }
-        }
-        else
-        {
-            // top particle effect
-            gameObject.GetComponent<ParticleSystem>().Stop();
-            gameObject.transform.Find("moveposition").GetComponent<ParticleSystem>().Stop();
         }
         _repairBarSlider.value = Mathf.Min(1, _repairedPercent);
         

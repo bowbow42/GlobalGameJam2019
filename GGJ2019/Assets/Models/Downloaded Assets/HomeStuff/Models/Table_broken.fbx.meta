@@ -1,27 +1,14 @@
 fileFormatVersion: 2
-guid: ed9f6e42de8aeba4f8f6f6c8f0bb1242
+guid: 754ba4d23d9e1a447abf61c7ccfac32c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: 042_vray
-    100002: //RootNode
-    100004: Object005
-    100006: Object03
-    400000: 042_vray
-    400002: //RootNode
-    400004: Object005
-    400006: Object03
-    2100000: 'Material #89'
-    2100002: 'Material #91'
-    2300000: 042_vray
-    2300002: Object005
-    2300004: Object03
-    3300000: 042_vray
-    3300002: Object005
-    3300004: Object03
-    4300000: 042_vray
-    4300002: Object03
-    4300004: Object005
+    100000: //RootNode
+    400000: //RootNode
+    2100000: MainMaterial
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Table
   externalObjects: {}
   materials:
     importMaterials: 1
