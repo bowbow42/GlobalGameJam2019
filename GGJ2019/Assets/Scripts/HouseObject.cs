@@ -33,13 +33,9 @@ public class HouseObject: MonoBehaviour {
         _wasJudged = false;
         _repairedPercent = 0;
         colliderBounds = gameObject.GetComponent<Collider>().bounds;
-        //viewCone = GameObject.FindGameObjectWithTag("viewCone");
-        //viewPlayer = GameObject.FindGameObjectWithTag("viewPlayer");
 
         _repairBarInstance = Instantiate(_repairBarPrefab, new Vector3(transform.position.x, transform.position.y+1, transform.position.z), transform.rotation) as GameObject;
-        Debug.Log(_repairBarInstance);
         _repairBarSlider = _repairBarInstance.GetComponentInChildren<Slider>();
-        Debug.Log(_repairBarSlider);
         
         foreach(Transform child in transform) {
             if(child.gameObject.tag == "broken") _brokenModel = child.gameObject;
@@ -52,9 +48,20 @@ public class HouseObject: MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if(!isRepaired()) {
-            if(colliderBounds.Intersects(_viewPlayer.GetComponent<Collider>().bounds)) {
+        if (!isRepaired())
+        {
+            if (colliderBounds.Intersects(_viewPlayer.GetComponent<Collider>().bounds))
+            {
                 _repairedPercent += (_repairProgressPerSecond * Time.deltaTime);
+
+                if (_brokenModel || _fixedModel)
+                {
+                    if (_repairedPercent > 0.8)
+                    {
+                        _brokenModel.active = false;
+                        _fixedModel.active = true;
+                    }
+                }
             }
         }
         _repairBarSlider.value = Mathf.Min(1, _repairedPercent);
@@ -62,16 +69,22 @@ public class HouseObject: MonoBehaviour {
         // check if buyer sees object
         if(colliderBounds.Intersects(_viewCone.GetComponent<Collider>().bounds)) {
             if(!_wasJudged) {
-                if(_repairedPercent > 0.8) {
+                if (_repairedPercent > 0.8)
+                {
                     Debug.Log("Nice Object");
                     _buyer.GetComponent<BuyerSatisfaction>().increase(0.1f);
-                    _wasJudged = true;
-                } else {
+                }
+                else
+                {
                     Debug.Log("This One is destroyed");
                     _buyer.GetComponent<BuyerSatisfaction>().decrease(0.1f);
-                    _wasJudged = true;
                 }
+                _wasJudged = true;
             }
+        }
+        else
+        {
+            _wasJudged = false;
         }
     }
 }

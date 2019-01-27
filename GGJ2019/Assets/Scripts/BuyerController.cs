@@ -34,10 +34,6 @@ public class BuyerController : MonoBehaviour {
         //  send agent to new position
         if (!_moving && (Time.realtimeSinceStartup - _timeSinceLastDest) > 5)
         {
-            Debug.Log(_timeSinceLastDest);
-            Debug.Log(Time.realtimeSinceStartup);
-            Debug.Log("new position please");
-
             // get new object
             int nextIndex = Random.Range(0, _destinations.transform.childCount);
             while (nextIndex == _lastItem)
