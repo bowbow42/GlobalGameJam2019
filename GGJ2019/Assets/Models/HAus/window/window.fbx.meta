@@ -1,77 +1,35 @@
 fileFormatVersion: 2
-guid: c999e63b1734edd43a1a7df5ddb485e0
+guid: 5962e0fee3986ad49b960b133fc1384b
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Cube.000
-    100002: Cube.001
-    100004: Cube.002
-    100006: Cube.003
-    100008: Cylinder
-    100010: Cylinder.001
-    100012: Cylinder.002
-    100014: Cylinder.003
-    100016: Cylinder.004
-    100018: Cylinder.005
-    100020: Cylinder.006
-    100022: Cylinder.007
-    100024: Cylinder.008
-    100026: //RootNode
-    400000: Cube.000
-    400002: Cube.001
-    400004: Cube.002
-    400006: Cube.003
-    400008: Cylinder
-    400010: Cylinder.001
-    400012: Cylinder.002
-    400014: Cylinder.003
-    400016: Cylinder.004
-    400018: Cylinder.005
-    400020: Cylinder.006
-    400022: Cylinder.007
-    400024: Cylinder.008
-    400026: //RootNode
-    2100000: Wood
-    2100002: Wood2
-    2300000: Cube.000
-    2300002: Cube.001
-    2300004: Cube.002
-    2300006: Cube.003
-    2300008: Cylinder
-    2300010: Cylinder.001
-    2300012: Cylinder.002
-    2300014: Cylinder.003
-    2300016: Cylinder.004
-    2300018: Cylinder.005
-    2300020: Cylinder.006
-    2300022: Cylinder.007
-    2300024: Cylinder.008
-    3300000: Cube.000
-    3300002: Cube.001
-    3300004: Cube.002
-    3300006: Cube.003
-    3300008: Cylinder
-    3300010: Cylinder.001
-    3300012: Cylinder.002
-    3300014: Cylinder.003
-    3300016: Cylinder.004
-    3300018: Cylinder.005
-    3300020: Cylinder.006
-    3300022: Cylinder.007
-    3300024: Cylinder.008
-    4300000: Cylinder
-    4300002: Cube.003
-    4300004: Cube.000
-    4300006: Cube.001
-    4300008: Cube.002
-    4300010: Cylinder.001
-    4300012: Cylinder.002
-    4300014: Cylinder.003
-    4300016: Cylinder.004
-    4300018: Cylinder.005
-    4300020: Cylinder.006
-    4300022: Cylinder.008
-    4300024: Cylinder.007
+    100000: border
+    100002: cross
+    100004: glass
+    100006: wall
+    100008: //RootNode
+    400000: border
+    400002: cross
+    400004: glass
+    400006: wall
+    400008: //RootNode
+    2100000: No Name
+    2100002: border
+    2100004: source
+    2100006: glas
+    2300000: border
+    2300002: cross
+    2300004: glass
+    2300006: wall
+    3300000: border
+    3300002: cross
+    3300004: glass
+    3300006: wall
+    4300000: border
+    4300002: cross
+    4300004: wall
+    4300006: glass
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -124,8 +82,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -152,7 +110,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
