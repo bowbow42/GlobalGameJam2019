@@ -45,6 +45,7 @@ public class HouseObject : MonoBehaviour
             if (child.gameObject.tag == "broken") _brokenModel = child.gameObject;
             if (child.gameObject.tag == "fixed") _fixedModel = child.gameObject;
         }
+
         if (!_brokenModel || !_fixedModel)
         {
             Debug.LogError("Missing Model or Tag in Model...");
@@ -64,8 +65,8 @@ public class HouseObject : MonoBehaviour
                 {
                     if (_repairedPercent > 0.8)
                     {
-                        _brokenModel.active = false;
-                        _fixedModel.active = true;
+                        _brokenModel.SetActive(false);
+                        _fixedModel.SetActive( true );
                     }
                 }
 
@@ -79,7 +80,7 @@ public class HouseObject : MonoBehaviour
                     ParticleSystem.EmissionModule em = ps.emission;
                     em.enabled = true;
                 }
-                Debug.Log("Systems enabled: " + i);
+                //Debug.Log("Particle Running" + i);
             }
             else
             {

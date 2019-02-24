@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BuyerSatisfaction: MonoBehaviour {
 
@@ -23,6 +24,10 @@ public class BuyerSatisfaction: MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        if ( _buyerSatisfactionBar.value > 0.95f ) {
+            SceneManager.LoadScene( "WinScene" );
+        }else if ( _buyerSatisfactionBar.value < 0.05f ) {
+            SceneManager.LoadScene( "LooseScene" );
+        }
     }
 }
